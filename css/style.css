@@ -1,7 +1,9 @@
+
+
 /**
 *Grids with specific positioning
 */  
-.container-1 {
+[class*="container-"] {
 width: 600px;
 height: 300px;
 border: 1px solid #333;
@@ -44,12 +46,12 @@ grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-li
 /**
  * Grids without specific positioning
  */
-.container-2 {
+/* .container-2 {
     width: 600px;
     height: 300px;
     border: 1px solid #333;
     display: grid;
-  }
+  } */
 
   
 
