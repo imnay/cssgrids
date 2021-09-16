@@ -46,13 +46,46 @@ grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-li
 /**
  * Grids without specific positioning
  */
-/* .container-2 {
-    width: 600px;
-    height: 300px;
-    border: 1px solid #333;
-    display: grid;
-  } */
 
+ .container-2 {
+     grid-template-columns: repeat(3, 1fr); /* 1fr 1fr 1fr */
+     grid-template-rows: auto;
+
+     padding: 10px;
+    /* column-gap: 10px;
+    row-gap: 10px; */
+    /* short-hand */
+    gap: 20px;/* <grid-row-gap> <grid-column-gap>; */
+    gap: 5px 20px;
+    
+    justify-items: stretch; /* start | end | center | stretch; */
+    align-items: stretch; /* start | end | center | stretch; */
+    /* short-hand */
+    place-items: stretch;
+    place-items: stretch; /* <align-items> / <justify-items>*/
+
+    /* The grid needs to be less then the available space to be moved around */
+    justify-content: stretch; /* start | end | center | stretch (default)| space-around | space-between | space-evenly;*/
+    align-content: space-between; /* start | end | center | stretch (default)| space-around | space-between | space-evenly;*/
+    /* short-hand */
+    place-content: space-between;
+    place-content: stretch stretch/* <align-content> / <justify-content> */
+
+}
+
+
+ [class*=box] {
+     border: 1px solid #333;
+    
+ }
+
+ .box5 {
+    justify-self: start; /* start | end | center | stretch (default); */
+    align-self: start; /* start | end | center | stretch (default); */
+    /* short-hand */
+    place-self: center;
+    place-self: center center; <align-self> / <justify-items>
+}
   
 
 
