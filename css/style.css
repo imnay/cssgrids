@@ -1,16 +1,16 @@
-
+[class*="container-"] {
+    width: 600px;
+    height: 300px;
+    border: 1px solid #333;
+    display: grid;
+}
 
 /**
-*Grids with specific positioning
-*/  
-[class*="container-"] {
-width: 600px;
-height: 300px;
-border: 1px solid #333;
-display: grid;
-
-grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
-grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+ * Grids with specific positioning
+ */
+.container-1 {
+    grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+    grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
 }
 
 .item-a {
@@ -43,26 +43,29 @@ grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-li
     grid-column: 3 / span 2; /* <start-line> / <end-line>*/
     grid-row: third-line / 4; /* <start-line> / <end-line> */
 }
+
+
 /**
  * Grids without specific positioning
  */
+.container-2 {
+    grid-template-columns: repeat(3, 1fr); /* 1fr 1fr 1fr */
+    grid-template-rows: auto;
 
- .container-2 {
-     grid-template-columns: repeat(3, 1fr); /* 1fr 1fr 1fr */
-     grid-template-rows: auto;
+    padding: 10px;
 
-     padding: 10px;
     /* column-gap: 10px;
     row-gap: 10px; */
     /* short-hand */
     gap: 20px;/* <grid-row-gap> <grid-column-gap>; */
-    gap: 5px 20px;
-    
-    justify-items: stretch; /* start | end | center | stretch; */
-    align-items: stretch; /* start | end | center | stretch; */
+    gap: 5px 15px;
+
+
+    justify-items: stretch; /* start | end | center | stretch (default);*/
+    align-items: stretch; /* start | end | center | stretch (default);*/
     /* short-hand */
-    place-items: stretch;
-    place-items: stretch; /* <align-items> / <justify-items>*/
+    place-items: center;
+    place-items: stretch stretch; /* <align-items> / <justify-items>*/
 
     /* The grid needs to be less then the available space to be moved around */
     justify-content: stretch; /* start | end | center | stretch (default)| space-around | space-between | space-evenly;*/
@@ -70,23 +73,54 @@ grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-li
     /* short-hand */
     place-content: space-between;
     place-content: stretch stretch/* <align-content> / <justify-content> */
-
 }
 
+[class*="box"] {
+    border: 1px solid #333;
+}
 
- [class*=box] {
-     border: 1px solid #333;
-    
- }
-
- .box5 {
+.box5 {
     justify-self: start; /* start | end | center | stretch (default); */
     align-self: start; /* start | end | center | stretch (default); */
     /* short-hand */
     place-self: center;
-    place-self: center center; <align-self> / <justify-items>
+    place-self: center center; /* <align-self> / <justify-items>*/
 }
-  
 
 
+/**
+ * Grid areas
+ */
 
+.container-3 {
+    /* grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto; */
+    grid-template-areas: 
+        "header header header sidebar"
+        "content content content sidebar"
+        "footer footer footer footer"
+    ;
+    
+    padding: 10px;
+    gap: 10px 20px;
+}
+
+header {
+    background-color: pink;
+    grid-area: header;
+}
+
+main {
+    background-color: beige;
+    grid-area: content;
+}
+
+aside {
+    background-color: lightgreen;
+    grid-area: sidebar;
+}
+
+footer {
+    background-color: skyblue;
+    grid-area: footer;
+}
